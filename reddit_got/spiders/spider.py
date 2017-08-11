@@ -4,14 +4,14 @@ from scrapy import Spider
 
 
 class RedditGOT(Spider):
-	name = 'redditGOT'
+	name = 'reddit_got'
 	allowed_domains = ['www.reddit.com/r/gameofthrones/']
 	start_urls = ['https://www.reddit.com/r/gameofthrones/']
 
 	def parse(self, response):
 		# remember that .extract() returns a list
 		page_title = response.css('title::text').extract()[0]
-		
+
 		topic_titles = response.css('.title.may-blank::text').extract()
 		topic_comment_count = response.css('.comments.may-blank::text').extract()
 
